@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Serilog;
+
 namespace PruebaMiddlewares
 {
     public class CustomLoggingMiddleware(RequestDelegate next, ILogger<CustomLoggingMiddleware> logger)
