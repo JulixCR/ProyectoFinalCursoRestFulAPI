@@ -1,4 +1,4 @@
-﻿using ProyectoFinal.API.Entities;
+﻿using ProyectoFinal.API.Models;
 
 namespace ProyectoFinal.API.Services
 {
@@ -8,7 +8,6 @@ namespace ProyectoFinal.API.Services
         Task<string> ConsultarIndicadorEconomico();
         Task<SituacionTributaria?> ConsultarExoneracion(string autorizacion);
         Task<SituacionTributaria?> ConsultarProductorAgropecuario(string identificacion);
-        Task<SituacionTributaria?> ConsultarCabys(string codigoConsultar);
-
+        Task<CodigoCabys?> ConsultarCabys(string codigoConsultar);
     }
 }

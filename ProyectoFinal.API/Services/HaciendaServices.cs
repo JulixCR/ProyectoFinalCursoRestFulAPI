@@ -1,4 +1,4 @@
-﻿using ProyectoFinal.API.Entities;
+﻿using ProyectoFinal.API.Models;
 
 namespace ProyectoFinal.API.Services
 {
@@ -65,15 +65,15 @@ namespace ProyectoFinal.API.Services
             return situacionHacienda;
         }
 
-        public async Task<SituacionTributaria?> ConsultarCabys(string codigoConsultar)
+        public async Task<CodigoCabys?> ConsultarCabys(string codigoConsultar)
         {
-            SituacionTributaria? situacionHacienda = new SituacionTributaria(); //utilizar otra entidad para cabys
+            CodigoCabys? situacionHacienda = new CodigoCabys(); //utilizar otra entidad para cabys
 
             var responseSituacion = await _httpClient.GetAsync($"fe/cabys?q={codigoConsultar}");
 
             if (responseSituacion.IsSuccessStatusCode)
             {
-                situacionHacienda = await responseSituacion.Content.ReadFromJsonAsync<SituacionTributaria>();
+                situacionHacienda = await responseSituacion.Content.ReadFromJsonAsync<CodigoCabys>();
             }
 
             return situacionHacienda;

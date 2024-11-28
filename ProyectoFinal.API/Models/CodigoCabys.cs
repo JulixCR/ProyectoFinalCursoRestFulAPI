@@ -1,4 +1,4 @@
-﻿namespace ProyectoFinal.API.Entities
+﻿namespace ProyectoFinal.API.Models
 {
     public class CodigoCabys
     {
