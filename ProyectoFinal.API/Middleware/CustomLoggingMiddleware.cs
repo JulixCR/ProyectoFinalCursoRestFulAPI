@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-
-namespace ProyectoFinal.API
+using Serilog;
+namespace PruebaMiddlewares
 {
     public class CustomLoggingMiddleware(RequestDelegate next, ILogger<CustomLoggingMiddleware> logger)
     {

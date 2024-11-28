@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProyectoFinal.API.Entities;
+using ProyectoFinal.API.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,18 +10,27 @@ namespace ProyectoFinal.API.Controllers
     [ApiController]
     public class HaciendaController : ControllerBase
     {
-        // GET: api/<HaciendaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IHaciendaServices _servicioHacienda;
+
+        public HaciendaController(IHaciendaServices servicioHacienda)
         {
-            return new string[] { "value1", "value2" };
+            this._servicioHacienda = servicioHacienda;
         }
 
-        // GET api/<HaciendaController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<HaciendaController>
+        [HttpGet("ConsultarSituacionTributaria")]
+        public IActionResult ConsultarSituacionTributaria(string identificacion)
         {
-            return "value";
+            Task<SituacionTributaria> situacion = _servicioHacienda.ConsultarSituacionTributaria(identificacion);
+
+            if (situacion.Result != null)
+            {
+                return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }            
         }
 
         // POST api/<HaciendaController>
