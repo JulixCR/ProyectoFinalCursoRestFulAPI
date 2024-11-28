@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace PruebaMiddlewares
+namespace ProyectoFinal.API
 {
     public class CustomExceptionHandlerMiddleware(RequestDelegate next)
     {
