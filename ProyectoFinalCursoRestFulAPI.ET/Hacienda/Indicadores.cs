@@ -1,4 +1,4 @@
-﻿namespace ProyectoFinal.API.Models
+﻿namespace ProyectoFinal.ET
 {
     public class Indicadores
     {
@@ -28,6 +28,6 @@
     public class Venta
     {
         public DateTime fecha { get; set; }
-        public int valor { get; set; }
+        public double valor { get; set; }
     }
 }

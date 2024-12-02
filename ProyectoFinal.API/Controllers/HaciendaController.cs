@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProyectoFinal.API.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ProyectoFinal.ET;
 using ProyectoFinal.API.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,8 +18,8 @@ namespace ProyectoFinal.API.Controllers
             this._servicioHacienda = servicioHacienda;
         }
 
-        // GET: api/<HaciendaController>
         [HttpGet("ConsultarSituacionTributaria")]
+        [Authorize]
         public IActionResult ConsultarSituacionTributaria(string identificacion)
         {
             Task<SituacionTributaria> situacion = _servicioHacienda.ConsultarSituacionTributaria(identificacion);
@@ -30,25 +31,71 @@ namespace ProyectoFinal.API.Controllers
             else
             {
                 return NotFound();
-            }            
+            }
         }
 
-        // POST api/<HaciendaController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("ConsultarIndicadorEconomico")]
+        [Authorize]
+        public IActionResult ConsultarIndicadorEconomico()
         {
+            Task<Indicadores> situacion = _servicioHacienda.ConsultarIndicadorEconomico();
+
+            if (situacion.Result != null)
+            {
+                return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        // PUT api/<HaciendaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("ConsultarExoneracion")]
+        [Authorize]
+        public IActionResult ConsultarExoneracion(string exoneracion)
         {
+            Task<Exoneracion> situacion = _servicioHacienda.ConsultarExoneracion(exoneracion);
+
+            if (situacion.Result != null)
+            {
+                return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
-        // DELETE api/<HaciendaController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpGet("ConsultarProductorAgropecuario")]
+        [Authorize]
+        public IActionResult ConsultarProductorAgropecuario(string identificacion)
         {
+            Task<Agropecuario> situacion = _servicioHacienda.ConsultarProductorAgropecuario(identificacion);
+
+            if (situacion.Result != null)
+            {
+                return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("ConsultarCabys")]
+        [Authorize]
+        public IActionResult ConsultarCabys(string codigoConsulta)
+        {
+            Task<CodigoCabys> situacion = _servicioHacienda.ConsultarCabys(codigoConsulta);
+
+            if (situacion.Result != null)
+            {
+                return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

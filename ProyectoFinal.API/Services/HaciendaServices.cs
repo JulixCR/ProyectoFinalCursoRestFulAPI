@@ -1,4 +1,4 @@
-﻿using ProyectoFinal.API.Models;
+﻿using ProyectoFinal.ET;
 
 namespace ProyectoFinal.API.Services
 {
@@ -26,40 +26,43 @@ namespace ProyectoFinal.API.Services
             return situacionHacienda;
         }
 
-        public async Task<string> ConsultarIndicadorEconomico()
+        public async Task<Indicadores?> ConsultarIndicadorEconomico()
         {
+            Indicadores? indicadoresHacienda = new Indicadores();
 
-            var responseString = await _httpClient.GetStringAsync("indicadores/tc"); //requiere crear una entidad nueva 
+            var responseSituacion = await _httpClient.GetAsync($"indicadores/tc");
 
+            if (responseSituacion.IsSuccessStatusCode)
+            {
+                indicadoresHacienda = await responseSituacion.Content.ReadFromJsonAsync<Indicadores>();
+            }
 
-            Console.WriteLine(responseString);
-
-            return responseString;
+            return indicadoresHacienda;
         }
 
-        public async Task<SituacionTributaria?> ConsultarExoneracion(string autorizacion)
+        public async Task<Exoneracion?> ConsultarExoneracion(string autorizacion)
         {
-            SituacionTributaria? situacionHacienda = new SituacionTributaria(); //utilizar otra entidad para exportacion
+            Exoneracion? exoneracionHacienda = new Exoneracion();
 
             var responseSituacion = await _httpClient.GetAsync($"fe/ex?autorizacion={autorizacion}");
 
             if (responseSituacion.IsSuccessStatusCode)
             {
-                situacionHacienda = await responseSituacion.Content.ReadFromJsonAsync<SituacionTributaria>();
+                exoneracionHacienda = await responseSituacion.Content.ReadFromJsonAsync<Exoneracion>();
             }
 
-            return situacionHacienda;
+            return exoneracionHacienda;
         }
 
-        public async Task<SituacionTributaria?> ConsultarProductorAgropecuario(string identificacion)
+        public async Task<Agropecuario?> ConsultarProductorAgropecuario(string identificacion)
         {
-            SituacionTributaria? situacionHacienda = new SituacionTributaria(); //utilizar otra entidad para exportacion
+            Agropecuario? situacionHacienda = new Agropecuario(); //utilizar otra entidad para exportacion
 
             var responseSituacion = await _httpClient.GetAsync($"fe/agropecuario?identificacion={identificacion}");
 
             if (responseSituacion.IsSuccessStatusCode)
             {
-                situacionHacienda = await responseSituacion.Content.ReadFromJsonAsync<SituacionTributaria>();
+                situacionHacienda = await responseSituacion.Content.ReadFromJsonAsync<Agropecuario>();
             }
 
             return situacionHacienda;

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoFinal.BL", "Proyect
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoFinal.DS", "ProyectoFinal.DS\ProyectoFinal.DS.csproj", "{93057194-77E1-4FAE-B67A-BCCBB5C00B95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoFinal.ET", "ProyectoFinalCursoRestFulAPI.ET\ProyectoFinal.ET.csproj", "{709600CA-F8E7-4929-AA45-B989D0B253F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{93057194-77E1-4FAE-B67A-BCCBB5C00B95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93057194-77E1-4FAE-B67A-BCCBB5C00B95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93057194-77E1-4FAE-B67A-BCCBB5C00B95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709600CA-F8E7-4929-AA45-B989D0B253F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709600CA-F8E7-4929-AA45-B989D0B253F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709600CA-F8E7-4929-AA45-B989D0B253F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709600CA-F8E7-4929-AA45-B989D0B253F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

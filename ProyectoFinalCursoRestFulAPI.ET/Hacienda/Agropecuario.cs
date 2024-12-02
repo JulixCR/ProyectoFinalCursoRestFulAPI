@@ -1,4 +1,4 @@
-﻿namespace ProyectoFinal.API.Models
+﻿namespace ProyectoFinal.ET
 {
     public class Agropecuario
     {
