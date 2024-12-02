@@ -16,9 +16,9 @@ namespace ProyectoFinal.API.Controllers
     public class LoginController : ControllerBase
     {
         private IConfiguration _config;
-        private BLUsuario _blUsuario;
+        private IBLUsuario _blUsuario;
 
-        public LoginController(IConfiguration config, BLUsuario bLUsuario)
+        public LoginController(IConfiguration config, IBLUsuario bLUsuario)
         {
             _config = config;
             _blUsuario = bLUsuario;

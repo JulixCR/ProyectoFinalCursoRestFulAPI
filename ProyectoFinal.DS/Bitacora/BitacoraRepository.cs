@@ -9,44 +9,24 @@ using Dapper;
 
 namespace ProyectoFinal.DS
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class BitacoraRepository : IBitacoraRepository
     {
         private IConfiguration _config;
 
-        public UsuarioRepository(IConfiguration config)
+        public BitacoraRepository(IConfiguration config)
         {
             _config = config;
         }
 
-        public Usuario ConsultarCredenciales(Usuario login)
+        public bool RegistrarPeticionAPI(PeticionAPI peticion)
         {
             try
             {
                 SqlConnection db = new SqlConnection(_config.GetConnectionString("ProyectoConn"));
 
-                var result = db.Query<Usuario>(
-                    sql: "SP_ConsultarUsuario",
-                    param: new { IdUsuario = login.IdUsuario, Pass = login.Password },
-                    commandType: System.Data.CommandType.StoredProcedure
-                );
-                return result.FirstOrDefault();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }            
-        }
-
-        public bool InsertarCredenciales(Usuario login)
-        {
-            try
-            {
-                SqlConnection db = new SqlConnection(_config.GetConnectionString("ProyectoConn"));
-
-                var result = db.Execute(
-                    sql: "SP_InsertarUsuario",
-                    param: new { IdUsuario = login.IdUsuario, Nombre = login.Nombre, Pass = login.Password },
+                var result = db.ExecuteAsync(
+                    sql: "SP_RegistrarPeticionAPI",
+                    param: new { IdUsuario = peticion.IdUsuario, Endpoint = peticion.Endpoint},
                     commandType: System.Data.CommandType.StoredProcedure
                 );
 
@@ -56,6 +36,26 @@ namespace ProyectoFinal.DS
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public List<PeticionAPI> ConsultarPeticiones(string idUsuario)
+        {
+            try
+            {
+                SqlConnection db = new SqlConnection(_config.GetConnectionString("ProyectoConn"));
+
+                var result = db.Query<PeticionAPI>(
+                    sql: "SP_ConsultarPeticionesAPI",
+                    param: new { IdUsuario = idUsuario},
+                    commandType: System.Data.CommandType.StoredProcedure
+                );
+                return result.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

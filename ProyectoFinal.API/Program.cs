@@ -13,8 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<BLUsuario>();
+builder.Services.AddSingleton<IBLUsuario, BLUsuario>();
+builder.Services.AddSingleton<IBLBitacora, BLBitacora>();
 builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddSingleton<IBitacoraRepository, BitacoraRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -69,7 +71,8 @@ builder.Services.AddScoped<IHaciendaServices, HaciendaServices>();
 
 var app = builder.Build();
 
-app.UseCustomExceptionHandlerMiddleware();
+app.UseCustomLoggingMiddleware();
+//app.UseCustomExceptionHandlerMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

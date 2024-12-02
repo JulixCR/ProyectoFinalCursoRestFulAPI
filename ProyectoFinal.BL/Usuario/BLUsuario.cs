@@ -12,7 +12,7 @@ using ProyectoFinal.DS;
 
 namespace ProyectoFinal.BL
 {
-    public class BLUsuario
+    public class BLUsuario : IBLUsuario
     {
         private IConfiguration _config;
         private IUsuarioRepository _usuario;
@@ -38,7 +38,7 @@ namespace ProyectoFinal.BL
             var credenciales = new SigningCredentials(llaveSeguridad, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, usuario.Id),
+                new Claim(JwtRegisteredClaimNames.Sub, usuario.IdUsuario),
                 new Claim(JwtRegisteredClaimNames.Name, usuario.Nombre),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

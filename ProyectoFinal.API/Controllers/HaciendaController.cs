@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.ET;
 using ProyectoFinal.API.Services;
+using ProyectoFinal.BL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,10 +13,12 @@ namespace ProyectoFinal.API.Controllers
     public class HaciendaController : ControllerBase
     {
         private readonly IHaciendaServices _servicioHacienda;
+        private IBLBitacora _bitacora;
 
-        public HaciendaController(IHaciendaServices servicioHacienda)
+        public HaciendaController(IHaciendaServices servicioHacienda, IBLBitacora bitacora)
         {
             this._servicioHacienda = servicioHacienda;
+            this._bitacora = bitacora;
         }
 
         [HttpGet("ConsultarSituacionTributaria")]
@@ -91,6 +94,22 @@ namespace ProyectoFinal.API.Controllers
             if (situacion.Result != null)
             {
                 return Ok(situacion.Result);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("ConsultarBitacora")]
+        [Authorize]
+        public IActionResult ConsultarBitacora(string idUsuario)
+        {
+            List<PeticionAPI> bitacoraAPI = _bitacora.ConsultarPeticionesUsuario(idUsuario);
+
+            if (bitacoraAPI != null)
+            {
+                return Ok(bitacoraAPI);
             }
             else
             {
