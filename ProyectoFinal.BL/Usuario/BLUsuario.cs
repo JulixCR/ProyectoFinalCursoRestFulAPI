@@ -51,5 +51,10 @@ namespace ProyectoFinal.BL
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public bool CrearUsuario(Usuario login)
+        {
+            return _usuario.InsertarCredenciales(login);
+        }
     }
 }

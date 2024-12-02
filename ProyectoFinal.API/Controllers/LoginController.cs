@@ -40,6 +40,25 @@ namespace ProyectoFinal.API.Controllers
             return response;
         }
 
+        [HttpPost("CrearUsuario")]
+        [Authorize]
+        public IActionResult CrearUsuario([FromBody] Usuario login)
+        {
+            IActionResult response = Unauthorized();
+            var usuario = _blUsuario.CrearUsuario(login);
+
+            if (usuario)
+            {
+                response = Ok();
+            }
+            else
+            {
+                response = BadRequest();    
+            }
+
+            return response;
+        }
+
         //private Usuario AutenticarUsuario(Usuario login)
         //{
         //    Usuario usuario = null;
