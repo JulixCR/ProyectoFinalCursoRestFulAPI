@@ -51,7 +51,7 @@ builder.Services.AddSwaggerGen(opt =>
 
 builder.Services.AddHttpClient<IHaciendaServices, HaciendaServices>("HaciendaAPI", client =>
 {
-    client.BaseAddress = new Uri("https://api.hacienda.go.cr/fe");
+    client.BaseAddress = new Uri("https://api.hacienda.go.cr");
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

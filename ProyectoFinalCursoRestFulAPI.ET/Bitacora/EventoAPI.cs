@@ -10,7 +10,7 @@ namespace ProyectoFinal.ET
     {
         public string IdUsuario { get; set; }
         public string Endpoint { get; set; }
-        public DateTime FechaEvento { get; set; }
+        public DateTime Fecha { get; set; }
 
 
     }

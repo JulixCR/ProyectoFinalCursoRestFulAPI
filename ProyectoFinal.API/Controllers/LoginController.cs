@@ -28,7 +28,7 @@ namespace ProyectoFinal.API.Controllers
         [HttpPost("Login")]
         public IActionResult Login([FromBody] Usuario login)
         {
-            IActionResult response = Unauthorized();
+            IActionResult response = Unauthorized(new { Error = "Error de autenticación, usuario incorrecto." });
             var usuario = _blUsuario.AutenticarUsuario(login);
 
             if (usuario != null)
@@ -49,7 +49,7 @@ namespace ProyectoFinal.API.Controllers
 
             if (usuario)
             {
-                response = Ok();
+                response = Ok(new { Mensaje = "Usuario creado correctamente!" });
             }
             else
             {

@@ -103,9 +103,9 @@ namespace ProyectoFinal.API.Controllers
 
         [HttpGet("ConsultarBitacora")]
         [Authorize]
-        public IActionResult ConsultarBitacora(string idUsuario)
+        public IActionResult ConsultarBitacora(DateTime fechaDesde, DateTime fechaHasta)
         {
-            List<PeticionAPI> bitacoraAPI = _bitacora.ConsultarPeticionesUsuario(idUsuario);
+            List<PeticionAPI> bitacoraAPI = _bitacora.ConsultarPeticiones(fechaDesde, fechaHasta);
 
             if (bitacoraAPI != null)
             {

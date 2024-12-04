@@ -39,7 +39,7 @@ namespace ProyectoFinal.DS
             }
         }
 
-        public List<PeticionAPI> ConsultarPeticiones(string idUsuario)
+        public List<PeticionAPI> ConsultarPeticiones(DateTime fechaDesde, DateTime fechaHasta)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace ProyectoFinal.DS
 
                 var result = db.Query<PeticionAPI>(
                     sql: "SP_ConsultarPeticionesAPI",
-                    param: new { IdUsuario = idUsuario},
+                    param: new { Desde = fechaDesde , Hasta = fechaHasta},
                     commandType: System.Data.CommandType.StoredProcedure
                 );
                 return result.ToList();

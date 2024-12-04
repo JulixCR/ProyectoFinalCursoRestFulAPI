@@ -16,6 +16,6 @@ namespace ProyectoFinal.BL
     {
         bool RegistrarEvento(PeticionAPI peticion);
 
-        List<PeticionAPI> ConsultarPeticionesUsuario(string idUsuario);
+        List<PeticionAPI> ConsultarPeticiones(DateTime fechaDesde, DateTime fechaHasta);
     }
 }

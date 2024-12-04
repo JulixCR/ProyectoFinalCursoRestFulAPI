@@ -28,11 +28,11 @@ namespace ProyectoFinal.BL
             return _bitacora.RegistrarPeticionAPI(peticion);
         }
 
-        public List<PeticionAPI> ConsultarPeticionesUsuario(string idUsuario)
+        public List<PeticionAPI> ConsultarPeticiones(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<PeticionAPI> peticiones = null;
 
-            peticiones = _bitacora.ConsultarPeticiones(idUsuario);
+            peticiones = _bitacora.ConsultarPeticiones(fechaDesde, fechaHasta);
 
             return peticiones;
         }

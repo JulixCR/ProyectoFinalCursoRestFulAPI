@@ -6,6 +6,6 @@ namespace ProyectoFinal.DS
     public interface IBitacoraRepository
     {
         bool RegistrarPeticionAPI(PeticionAPI peticion);
-        List<PeticionAPI> ConsultarPeticiones(string idUsuario);
+        List<PeticionAPI> ConsultarPeticiones(DateTime fechaDesde, DateTime fechaHasta);
     }
 }
