@@ -54,6 +54,11 @@ builder.Services.AddHttpClient<IHaciendaServices, HaciendaServices>("HaciendaAPI
     client.BaseAddress = new Uri("https://api.hacienda.go.cr");
 });
 
+builder.Services.AddHttpClient<IGoMetaServices, GoMetaServices>("GoMetaAPI", client =>
+{
+    client.BaseAddress = new Uri("https://apis.gometa.org");
+});
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -68,11 +73,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 
 builder.Services.AddScoped<IHaciendaServices, HaciendaServices>();
+builder.Services.AddScoped<IGoMetaServices, GoMetaServices>();
 
 var app = builder.Build();
 
 app.UseCustomLoggingMiddleware();
-app.UseCustomExceptionHandlerMiddleware();
+//app.UseCustomExceptionHandlerMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
