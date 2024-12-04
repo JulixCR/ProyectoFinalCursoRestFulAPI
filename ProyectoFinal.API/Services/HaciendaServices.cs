@@ -56,7 +56,7 @@ namespace ProyectoFinal.API.Services
 
         public async Task<Agropecuario?> ConsultarProductorAgropecuario(string identificacion)
         {
-            Agropecuario? situacionHacienda = new Agropecuario(); //utilizar otra entidad para exportacion
+            Agropecuario? situacionHacienda = new Agropecuario();
 
             var responseSituacion = await _httpClient.GetAsync($"fe/agropecuario?identificacion={identificacion}");
 
@@ -70,7 +70,7 @@ namespace ProyectoFinal.API.Services
 
         public async Task<CodigoCabys?> ConsultarCabys(string codigoConsultar)
         {
-            CodigoCabys? situacionHacienda = new CodigoCabys(); //utilizar otra entidad para cabys
+            CodigoCabys? situacionHacienda = new CodigoCabys();
 
             var responseSituacion = await _httpClient.GetAsync($"fe/cabys?q={codigoConsultar}");
 

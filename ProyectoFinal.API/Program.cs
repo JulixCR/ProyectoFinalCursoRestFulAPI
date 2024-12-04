@@ -72,7 +72,7 @@ builder.Services.AddScoped<IHaciendaServices, HaciendaServices>();
 var app = builder.Build();
 
 app.UseCustomLoggingMiddleware();
-//app.UseCustomExceptionHandlerMiddleware();
+app.UseCustomExceptionHandlerMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

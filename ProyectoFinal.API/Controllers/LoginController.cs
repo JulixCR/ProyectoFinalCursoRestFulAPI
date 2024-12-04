@@ -40,8 +40,8 @@ namespace ProyectoFinal.API.Controllers
             return response;
         }
 
+        [AllowAnonymous]
         [HttpPost("CrearUsuario")]
-        [Authorize]
         public IActionResult CrearUsuario([FromBody] Usuario login)
         {
             IActionResult response = Unauthorized();
@@ -57,41 +57,6 @@ namespace ProyectoFinal.API.Controllers
             }
 
             return response;
-        }
-
-        //private Usuario AutenticarUsuario(Usuario login)
-        //{
-        //    Usuario usuario = null;
-
-        //    if (login.Id == "0087")
-        //    {
-        //        usuario = new Usuario
-        //        {
-        //            Id = login.Id,
-        //            Nombre = login.Nombre
-        //        };
-        //    }
-        //    return usuario;
-        //}
-
-        //private string GenerarTokenJWT(Usuario usuario) 
-        //{
-        //    var llaveSeguridad = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-        //    var credenciales = new SigningCredentials(llaveSeguridad, SecurityAlgorithms.HmacSha256);
-
-        //    var claims = new[] {
-        //        new Claim(JwtRegisteredClaimNames.Sub, usuario.Id),
-        //        new Claim(JwtRegisteredClaimNames.Name, usuario.Nombre),
-        //        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        //    };
-
-        //    var token = new JwtSecurityToken(_config["Jwt:Issuer"],
-        //        _config["Jwt:Issuer"],
-        //        claims,
-        //        expires: DateTime.Now.AddMinutes(20),
-        //        signingCredentials: credenciales);
-
-        //    return new JwtSecurityTokenHandler().WriteToken(token);
-        //}
+        }      
     }
 }
