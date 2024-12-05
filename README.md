@@ -27,6 +27,6 @@ El proyecto sigue una arquitectura por capas, utiliza **Dapper** como ORM y empl
   - Endpoint para registro de nuevos usuarios.
 
 ## Instalación
-1. Clona este repositorio.
+1. Clona este repositorio https://github.com/JulixCR/ProyectoFinalCursoRestFulAPI.
 2. Restaura el respaldo de base de datos.
 3. Ajusta la cadena de conexión en el archivo appsettings.json.
