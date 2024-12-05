@@ -78,7 +78,7 @@ builder.Services.AddScoped<IGoMetaServices, GoMetaServices>();
 var app = builder.Build();
 
 app.UseCustomLoggingMiddleware();
-//app.UseCustomExceptionHandlerMiddleware();
+app.UseCustomExceptionHandlerMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
