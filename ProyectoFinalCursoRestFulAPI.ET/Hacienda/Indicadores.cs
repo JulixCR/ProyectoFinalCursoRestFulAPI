@@ -8,7 +8,7 @@
 
     public class Compra
     {
-        public DateTime fecha { get; set; }
+        public string fecha { get; set; }
         public double valor { get; set; }
     }
 
@@ -20,14 +20,15 @@
 
     public class Euro
     {
-        public DateTime fecha { get; set; }
+        public string fecha { get; set; }
         public double dolares { get; set; }
         public double colones { get; set; }
     }    
 
     public class Venta
     {
-        public DateTime fecha { get; set; }
+        public string
+            fecha { get; set; }
         public double valor { get; set; }
     }
 }
